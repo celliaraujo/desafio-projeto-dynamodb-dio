@@ -1,44 +1,38 @@
-# dio-live-dynamodb
-Repositório para o live coding do dia 30/09/2021 sobre o Amazon DynamoDB
+# Desafio de Pojeto DynamoDB
+Repositório copiado do professor Cassiano Peres para o live coding do dia 30/09/2021 sobre o Amazon DynamoDB, com alterações necessárias para a realização do desafio.
 
 ### Serviço utilizado
   - Amazon DynamoDB
-  - Amazon CLI para execução em linha de comando
+  - Amazon CLI para execução em linha de comando pelo Prompt de Comando do Windows
+  - CloudShell (para executar as Queries e comandos que o Prompt não suportou)
 
 ### Comandos para execução do experimento:
 
+Observações:
+1. Alteração de comando feita para funcionamento no terminal do windows (remoção das barras)
+2. Utilização de arquivo json para realização de consulta por artista
 
-- Criar uma tabela
+
+- Criar uma tabela 
+
 
 ```
-aws dynamodb create-table \
-    --table-name Music \
-    --attribute-definitions \
-        AttributeName=Artist,AttributeType=S \
-        AttributeName=SongTitle,AttributeType=S \
-    --key-schema \
-        AttributeName=Artist,KeyType=HASH \
-        AttributeName=SongTitle,KeyType=RANGE \
-    --provisioned-throughput \
-        ReadCapacityUnits=10,WriteCapacityUnits=5
+aws dynamodb create-table --table-name Music --attribute-definitions AttributeName=Artist,AttributeType=S AttributeName=SongTitle,AttributeType=S --key-schema AttributeName=Artist,KeyType=HASH AttributeName=SongTitle,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=10,WriteCapacityUnits=5
 ```
 
 - Inserir um item
 
 ```
-aws dynamodb put-item \
-    --table-name Music \
-    --item file://itemmusic.json \
+aws dynamodb put-item --table-name Music --item file://itemmusic.json 
 ```
 
 - Inserir múltiplos itens
 
 ```
-aws dynamodb batch-write-item \
-    --request-items file://batchmusic.json
+aws dynamodb batch-write-item --request-items file://batchmusic.json
 ```
 
-- Criar um index global secundário baeado no título do álbum
+- Criar um index global secundário baseado no título do álbum
 
 ```
 aws dynamodb update-table \
