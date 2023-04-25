@@ -70,12 +70,10 @@ aws dynamodb update-table \
 ```
 
 - Pesquisar item por artista
+#### Arquivo json passado como parâmetro
 
 ```
-aws dynamodb query \
-    --table-name Music \
-    --key-condition-expression "Artist = :artist" \
-    --expression-attribute-values  '{":artist":{"S":"Iron Maiden"}}'
+aws dynamodb query --table-name Music --key-condition-expression "Artist = :artist" --expression-attribute-values  file://qrartist.json
 ```
 - Pesquisar item por artista e título da música
 
