@@ -1,4 +1,4 @@
-# Desafio de Pojeto DynamoDB
+# Desafio de Projeto DynamoDB
 Repositório copiado do professor Cassiano Peres para o live coding do dia 30/09/2021 sobre o Amazon DynamoDB, com alterações necessárias para a realização do desafio.
 
 ### Serviço utilizado
